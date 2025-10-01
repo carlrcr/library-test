@@ -1,0 +1,15 @@
+/* Estilos personalizados SOLO de Card */
+  .custom-card-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  }
+  
+  .custom-card-hover {
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .custom-card-hover:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+
+/* Si no tienes estilos personalizados, este archivo puede estar vacío o no generarse */
