@@ -1,5 +1,5 @@
 import React from 'react';
-import './Card.css'; // CSS personalizado del componente
+import './Card.module.css'; // CSS personalizado del componente
 
 export interface CardProps {
   children: React.ReactNode;

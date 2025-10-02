@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.css'; // CSS personalizado del componente
+import './Button.module.css'; // CSS personalizado del componente
 
 export interface ButtonProps {
   children: React.ReactNode;
@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   const baseStyles = 'font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 custom-button-hover-effect';
   
   const variantStyles = {
-    primary: 'bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500 custom-button-shadow',
+    primary: 'bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500 custom-button-color',
     secondary: 'bg-gray-600 hover:bg-gray-700 text-white focus:ring-gray-500',
     danger: 'bg-red-600 hover:bg-red-700 text-white focus:ring-red-500'
   };

@@ -1,0 +1,14 @@
+.button-base {
+  font-family: system-ui, -apple-system, sans-serif;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-button-color {
+  color: red;
+}
+
+.button-base:active {
+  transform: scale(0.98);
+}

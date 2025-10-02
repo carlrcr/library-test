@@ -1,5 +1,5 @@
 // Importar estilos base de Tailwind (comunes para todos los componentes)
-import './styles.css';
+import './tailwind.css';
 
 // Exportar componentes
 // Los estilos personalizados de cada componente se cargan con ellos

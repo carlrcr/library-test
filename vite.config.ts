@@ -1,48 +1,32 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
+import dts from 'vite-plugin-dts';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    libInjectCss(),
+    dts({ 
+      include: ['src'],
+      insertTypesEntry: true,
+    }),
+  ],
   build: {
+    copyPublicDir: false,
     lib: {
-      entry: {
-        index: resolve(__dirname, 'src/index.ts'),
-        'components/Button': resolve(__dirname, 'src/components/Button.tsx'),
-        'components/Card': resolve(__dirname, 'src/components/Card.tsx')
-      },
-      name: 'MyReactLibrary',
+      entry: resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
-      fileName: (format, entryName) => `${entryName}.[hash].js`
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'react/jsx-runtime'
-        },
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-            // Extraer el nombre del componente del nombre del archivo
-            const name = assetInfo.name.replace('.css', '');
-            // Si es un componente (Button, Card), ponerlo en components/
-            if (name === 'Button' || name === 'Card') {
-              return `components/${name}.[hash].css`;
-            }
-            return `${name}.[hash].css`;
-          }
-          return 'assets/[name].[hash][extname]';
-        },
-        preserveModules: false, // Desactivamos preserveModules para usar entry points
-      }
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+        entryFileNames: '[name].js',
+        assetFileNames: '[name][extname]',
+      },
     },
-    cssCodeSplit: true,
-    cssMinify: true,
-    sourcemap: true
   },
-  css: {
-    postcss: './postcss.config.js'
-  }
 });

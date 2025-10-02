@@ -1,0 +1,8 @@
+/* Este archivo contendrá todas las utilidades de Tailwind usadas en la librería */
+/* Estilos personalizados para tu librería */
+@import './components/Button.module.css';
+/* Estilos base de Tailwind compartidos por todos los componentes */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
